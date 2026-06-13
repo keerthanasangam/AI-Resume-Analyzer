@@ -1,0 +1,9 @@
+Project: AI Resume Analyzer & Interview Coach
+
+Features:
+1. Resume Upload
+2. PDF Text Extraction
+3. Skill Detection
+4. Job Match Score
+5. Missing Skills
+6. Interview Questions
