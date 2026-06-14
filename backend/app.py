@@ -16,6 +16,9 @@ def home():
 @app.route("/analyze", methods=["POST"])
 def analyze():
     uploaded_file = request.files.get("resume")
+
+    job_description = request.form.get("job_description", "")
+
     if not uploaded_file:
         return {"error": "No resume file provided"}, 400
 
@@ -23,18 +26,17 @@ def analyze():
     uploaded_file.save(pdf_path)
 
     resume_text = extract_text(pdf_path)
+
     resume_skills = extract_skills(resume_text)
+    job_skills = extract_skills(job_description)
 
-    job_skills = ["python", "sql", "power bi", "tableau"]
-
-    matched_skills, missing_skills, score = calculate_match_score(
-        resume_skills, job_skills
-    )
+    matched_skills, missing_skills, score = calculate_match_score(resume_skills, job_skills)
 
     questions = get_interview_questions(resume_skills)
 
     return {
         "resume_skills": resume_skills,
+        "job_skills": job_skills,
         "matched_skills": matched_skills,
         "missing_skills": missing_skills,
         "score": score,
