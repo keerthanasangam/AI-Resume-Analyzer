@@ -4,59 +4,83 @@
 <head>
     <meta charset="UTF-8">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AI Resume Analyzer</title>
 
-    <link rel="stylesheet"
-          href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="container">
+    <div class="page-shell">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
 
-        <h1>AI Resume Analyzer</h1>
+        <main class="container">
+            <section class="hero">
+                <p class="eyebrow">AI Resume Analyzer</p>
+                <h1>Turn a resume and job post into clear hiring signals.</h1>
+                <p class="hero-copy">
+                    Upload a resume, paste a job description, and get match scores, missing skills,
+                    ATS feedback, interview questions, and a learning path in one place.
+                </p>
 
-        <p>
-            Upload your resume and
-            analyze your skills.
-        </p>
+                <div class="hero-stats">
+                    <div>
+                        <span class="stat-value">1</span>
+                        <span class="stat-label">resume upload</span>
+                    </div>
+                    <div>
+                        <span class="stat-value">5</span>
+                        <span class="stat-label">analysis outputs</span>
+                    </div>
+                    <div>
+                        <span class="stat-value">Fast</span>
+                        <span class="stat-label">feedback loop</span>
+                    </div>
+                </div>
+            </section>
 
-        <hr>
+            <section class="workspace">
+                <div class="panel form-panel">
+                    <div class="panel-header">
+                        <p class="section-tag">Input</p>
+                        <h2>Prepare your analysis</h2>
+                    </div>
 
-        <h3>Upload Resume</h3>
+                    <label class="field-label" for="resume">Resume file</label>
+                    <label class="file-drop" for="resume">
+                        <input type="file" id="resume" accept=".pdf,.doc,.docx" />
+                        <span class="file-drop-icon">↑</span>
+                        <span class="file-drop-title">Drop a resume or click to browse</span>
+                        <span class="file-drop-subtitle">PDF, DOC, or DOCX</span>
+                    </label>
+                    <div class="file-name" id="fileName">No file selected</div>
 
-        <input
-            type="file"
-            id="resume">
+                    <label class="field-label" for="jobDescription">Job description</label>
+                    <textarea
+                        id="jobDescription"
+                        rows="12"
+                        placeholder="Paste the role requirements, tools, and responsibilities here"></textarea>
 
-        <br><br>
+                    <div class="form-footer">
+                        <p class="hint">Tip: include the full posting for a better match score.</p>
+                        <button id="analyzeBtn">Analyze Resume</button>
+                    </div>
+                </div>
 
-        <h3>Job Description</h3>
-
-        <textarea
-            id="jobDescription"
-            rows="10"
-            cols="50"
-            placeholder="Enter required skills here">
-        </textarea>
-
-        <br><br>
-
-        <button id="analyzeBtn">
-            Analyze Resume
-        </button>
-
-        <hr>
-
-        <div id="result">
-
-            Results will appear here
-
-        </div>
-
+                <div class="panel result-panel">
+                    <div class="panel-header">
+                        <p class="section-tag">Insights</p>
+                        <h2>Analysis results</h2>
+                    </div>
+                    <div id="result" class="result-empty">
+                        Your results will appear here after analysis.
+                    </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="script.js"></script>
